@@ -1,9 +1,7 @@
 require 'twilio-ruby'
 
 class Checkout
-  
   def initialize (order)
-
     @order = order
     @total = nil
     @complete = false
@@ -11,11 +9,9 @@ class Checkout
     account_sid = ENV['TWILIO_SID']
     auth_token = ENV['TWILIO_AUTH']
     @client = Twilio::REST::Client.new account_sid, auth_token
-
   end
 
   def submit
-
     raise 'your order is empty' if calc_total == 0
     raise 'checkout already complete' if complete
 
@@ -30,8 +26,6 @@ class Checkout
     @total = calc_total
     @order.complete = true
     @complete = true
-
-
   end
 
   private
@@ -40,7 +34,5 @@ class Checkout
 
   def calc_total
     @order.view_order.inject(0) {|total,(pizza,values)| total + values[1]}
-
   end
-
 end

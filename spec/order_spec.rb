@@ -70,34 +70,17 @@ describe Order do
       expect{subject.add(:pepperoni, -2)}.to raise_error 'invalid number'
     end
 
-
-
-
   end
 
   context 'remove should' do
 
     it 'let customers remove an item and update selection' do
-      subject.add(:pepperoni, 5)
-      subject.remove(:pepperoni,2)
-      expect(subject.view_order).to eq ({pepperoni: [3, 30]})
+      subject.add(:pepperoni, 1)
+      expect(subject).to receive :add
+      subject.remove(:pepperoni, 1)
+
+
     end
-
-    it 'let customers remove an item and update total' do
-      subject.add(:pepperoni, 5)
-      subject.remove(:pepperoni,2)
-      expect(subject.view_total).to eq 30
-    end
-
-    # it 'raise error when you remove more pizzas than are in order' do
-    #   subject.add(:pepperoni, 1)
-    #   expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
-    # end
-
-    # it 'raise error if the order has been completed' do
-    #   subject.add(:pepperoni, 1)
-    #   expect{subject.remove(:pepperoni, 2)}.to raise_error 'invalid number'
-    # end
 
   end
 

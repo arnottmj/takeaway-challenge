@@ -1,5 +1,4 @@
 class Order
-
   attr_accessor :complete
 
   def initialize (menu)
@@ -7,18 +6,15 @@ class Order
     @order = {}
     @total = 0.0
     @complete = false
-
   end
 
   def view_order
     @order.clone
-
   end
 
   def view_total
     copy = @total.to_s
     copy.to_f
-
   end
 
   def add pizza, number
@@ -36,7 +32,6 @@ class Order
 
     remove_zero_quantity_pizzas
     @total = calc_total
-
   end
 
   def remove pizza, number
@@ -49,13 +44,10 @@ class Order
     @order.each do |i|
     @order.delete(i[0]) if i[1][0] == 0
     end
-
-
   end
 
   def pizza_already_selected? pizza
     @order.keys.include?(pizza)
-
   end
 
   def updated_values_for_add pizza, number
@@ -67,10 +59,7 @@ class Order
 
   def calc_total
     @order.inject(0) {|total,(pizza,values)| total + values[1]}
-
   end
-
-
 end
 
 
